@@ -23,7 +23,7 @@ output: html_document
  + 깊이(depth)
 
 > ####**질문점**
- 1) 첫 번재 기준점을 어떻게 정할것인가?
+ 1) 첫 번째 기준점을 어떻게 정할것인가?
  2) 분할에 대한 정치규칙은 어떻게 정할것인가?
  3) 끝마디에서의 예측값 할당은 어떻게 할것인가? 
 
@@ -54,6 +54,7 @@ library(rpart)
 
  # grow tree : Mileage 미국 연료 소비 마일(US gallon), Reliability(levels), Type(a factor with levels Compact Large Medium Small Sporty Van)
 head(cu.summary)
+colSums(!is.na(cu.summary))
 fit <- rpart(Mileage~Price + Country + Reliability + Type, 
    method="anova", data=cu.summary)
 
