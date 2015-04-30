@@ -1,0 +1,146 @@
+---
+title: "Decision Tree 4장 발표자료"
+author: "Sangyeol_lee"
+date: "Tuesday, April 29, 2015"
+output: html_document
+---
+
+###**제4장 의사결정나무** 
+ + 의사결정나무는 분류나무(classification trees)와 회귀나무(regression trees) 모형이 있다.
+ + 의사결정나무는 지도학습 기법으로 각 변수의 영역을 반복적으로 분할함으로써 전체 영역에서의 규칙을 생성한다.
+ + 예측력은 다른 지도학습 기법들에 비해 대체로 떨어지나 해석력이 좋고 if-then 형식으로 표현되어 이해하기 쉽고
+ + SQL과 같은 데이터베이스 언어로 쉽게 구현되는 장점이 있다.
+
+![그림참고](http://dms.irb.hr/tutorial/images/dtree_image.gif)
+
+> ####**구성요소**
+ + 뿌리 마디(root node)
+ + 자식 마디(child node)
+ + 부모 마디(parent node)
+ + 끝 마디(terminal node)
+ + 중간 마디(internal node)
+ + 가지(branch)
+ + 깊이(depth)
+
+> ####**질문점**
+ 1) 첫 번재 기준점을 어떻게 정할것인가?
+ 2) 분할에 대한 정치규칙은 어떻게 정할것인가?
+ 3) 끝마디에서의 예측값 할당은 어떻게 할것인가? 
+
+####**제 2절 의사결정나무의 형성**
+  의사결정나무의 형성과정은 크게 1) 성장(growing), 2) 가지치기(pruning), 3)타당성 평가, 4)해석 및 예측
+  
+  성장과정 : 각 마디에서 적절한 최적의 분리 규칙 
+  가지치기 : 오차를 크게 할 위험이 높거나 부적절한 추론규칙을 가지고 있는 가지 또는 불필요한 가지 제거
+  타당성 평가 : 이익도표(gain chart), 위험도표(risk chart) 혹은 시험자료를 이용하여 의사결정나무 평가
+  해석 및 예측 : 구축된 나무모형 해석 예측모형 설정
+
+##### & 이익 도표(Gain Chart) 특정 클래스에 관심이 있을 경우 상대적으로 적은 수의 데이터를 선택해 원하는 클래스 케이스를 얻음.
+![그림참고](http://www.saedsayad.com/images/Chart_Gain_3.png)
+
+
+>###**회귀나무(regression tree)**
+
+![그림참고](http://f.hypotheses.org/wp-content/blogs.dir/253/files/2013/01/arbre-gini-x1-x2-encore.png)
+
+$$
+  \Delta i(t) = i(t) - p_L i(t_L) - p_R i(t_R). 
+$$
+단, $$i(t)=\sum_{i \in t}(y_i - \bar y_t)^2$$  
+
+```{r}
+# Regression Tree Example
+library(rpart)
+
+ # grow tree : Mileage 미국 연료 소비 마일(US gallon), Reliability(levels), Type(a factor with levels Compact Large Medium Small Sporty Van)
+head(cu.summary)
+fit <- rpart(Mileage~Price + Country + Reliability + Type, 
+   method="anova", data=cu.summary)
+
+printcp(fit) # display the results cp는 cost-complexity tunning parameter, xerror는 cross-validation error
+plotcp(fit) # visualize cross-validation results 
+summary(fit) # detailed summary of splits
+
+# create additional plots 
+par(mfrow=c(1,2)) # two plots on one page 
+rsq.rpart(fit) # visualize cross-validation results   
+
+# plot tree 
+plot(fit, uniform=TRUE, 
+   main="Regression Tree for Mileage ")
+ text(fit, use.n=TRUE, all=TRUE, cex=.8)
+
+```
+
+> **비용-복잡도 가지치기(cost-complexity pruning)**
+
+성장시킨 나무모형  $T_0$를 가지치기하여 얻을  수 있는 나무모형을 $T \subset T_0$로 나타내자. 
+\[ C_\alpha(T) = \sum_{t \in \tilde T} i(t) + \alpha |T| \]
+로 정의되며 가지치기는 $\alpha$에 대하여  $C_\alpha(T)$를 최소화하는 $T_\alpha \subset T_0$를 찾는 문제가 된다.
+
+#![그림참고](http://www.ucl.ac.uk/~ucfbpve/papers/VermeeschGCA2006/W3441-rev33x.png)
+#![그림참고](http://www.ucl.ac.uk/~ucfbpve/papers/VermeeschGCA2006/W3441-rev34x.png)
+
+$|T|$는 $T$에서의 끝마디 개수, 
+여기서 $\alpha \geq 0$는 나무모형의 크기와 자료에 대한 적합도를 조절하는 조율모수로 $\alpha$값이 크면(작으면) $T_\alpha$의 크기는 작아(커)진다.
+$\alpha=0$이면 가지치기는 일어나지 않고 $T_0$를 최종모형으로 준다.
+
+추정값 $\hat{\alpha}$은 자료로부터 흔히 5 또는 10-묶음 교차확인오차로 얻을  수 있다. 가지치기된 최종 모형은 $T_{\hat{\alpha}}$으로 나타낼  수 있고
+시험자료가 ${x}\in R_m$이면 $\hat{y}=\hat{c}_m$으로 예측한다.
+
+>###**분류나무(classification trees)**
+
+출력변수가 범주형인 분류나무는 카이제곱 통계량, 지니지수(Gini index), 엔트로피지수(entropy index) 등을 불순도의 측도로 사용하여 회귀나무와 동일한 방식으로 성장시키게 된다. 오분류율을 불순도의 측도로 사용하여 회귀나무와 동일한 방식으로 실시하여 최종 분류나무모형 $T_{\hat{\alpha}}$을 얻게 된다. 분류나무는 예측값을 각 마디에서 다수결(majority vote) 원칙으로 정함.
+
+```{r}
+# classfication Tree Example
+library(MASS)
+library(tree)
+data(iris)
+plot(iris[,1:4], col=as.integer(iris$Species), pch=substring((iris$Species),1,1))
+ir.tr = tree(Species ~., iris)
+summary(ir.tr)
+ir.tr
+plot(ir.tr)
+text(ir.tr, all=T)
+
+#가지치구 이후 Trees
+ir.tr1 = snip.tree(ir.tr, nodes=c(12,7))
+plot(ir.tr1)
+text(ir.tr1, all=T)
+par(pty="s")
+plot(iris[,3],iris[,4],type="n", xlab="petal length", ylab="petal width")
+text(iris[,3],iris[,4],c("s","c","v")[iris[,5]])
+partition.tree(ir.tr1, add=TRUE, cex=1.5)
+
+#끝마디의 수를 4로 하여 가지치기
+ir.tr2 = prune.misclass(ir.tr)
+plot(ir.tr2)
+fin.tr = prune.misclass(ir.tr, best=4)
+plot(fin.tr)
+text(fin.tr, all = T)
+
+```
+
+>###**제3절 불순도의 여러가지 측도**
+
+#![그림참고](http://images.se2.naver.com/smedit/2012/9/17/h774yvrrdkixqd.jpg)
+#![그림참고](http://academic.uprm.edu/wrolke/esma6665/graphs/disc15.png)
+#![그림참고](http://academic.uprm.edu/wrolke/esma6665/graphs/disc16.png)
+#![그림참고](https://www.projectrhea.org/rhea/images/5/52/Impurity_Old_Kiwi.jpg)
+
+>###**제 4절 여러가지 의사결정나무 알고리즘**
+  + CART(classfication and regression trees) : Breiman(1984) binary split
+  + C4.5와 C5.0 : Quinlan(1993) multiple splilt
+  + CHAID : Sonquist(1963)의 AID의 후신
+
+>###**제 5절 의사결정나무 특징**
+  + 장점
+     + 1) if-then 형식의 이해하기 쉬운 규칙 생성 분류작업 용이
+     + 2) 연속형 변수와 범주형 변수를 모두 취급할 수 있으며 모형에 대한 가정이 필요 없는 비모수적 방법
+     + 3) 설명력 있는 변수에 대하여 최초로 분리 일어나는 특징 
+  + 단점
+     + 1) 출력변수가 연속형인 회귀모형에서는 예측력이 떨어짐
+     + 2) 복잡한 나무모형은 예측력이 저하되고 해석 어려움 계산량이 많음
+     + 3) 분류경계가 사각형이 아닌 경우 좋지 않은 결과가 줄수 있음
+           4) 자료에 약간의 변화가 있는 경우 전혀 다른 결과를 (분산이 매우 큰) 불안정한 방법 -> 해결책 : 배깅(bagging)
