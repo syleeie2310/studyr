@@ -1,4 +1,4 @@
----
+z-zz--
 title: "Neural networks"
 author: "Sangyeol_lee"
 date: "Wednesday, May 06, 2015"
@@ -14,6 +14,8 @@ output: html_document
  + 인공신경망의 기원은 1958년에 Rosenblatt가 제안한 퍼셉트론이 시작.
  + n개의 input과 1개의 output에 대하여 각각의 input의 weight를 Wi라고 한 후 퍼셉트론을 수식으로 나타내면
  $$y = \varphi \left ( \sum_{i=1}^{n}\omega i xi + b \right ) $$ 
+ $$w_{i} \leftarrow w_{i} + \bigtriangleup w_{i} $$
+ $$\bigtriangleup w_{i} = \eta \left ( t - o \right ) x_{i} $$
 
 ![그림참고](http://www.codeproject.com/KB/recipes/NeuralNetwork_1/NN2.png)
 
