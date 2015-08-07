@@ -187,7 +187,7 @@ div#notebook {
 <li>Represent statistical inference in terms of graphical manipulation</li>
 </ul>
 <blockquote><h3 id="Bayes-Theorem"><em>Bayes Theorem</em><a class="anchor-link" href="#Bayes-Theorem">&#182;</a></h3><p><img src="http://www.lancs.ac.uk/~jamest/Group/images/bayesthm.jpg" alt="BayesTheorem"></p>
-<h3 id="Examples-of-probabilistic-graphical-models"><em>Examples of probabilistic graphical models</em><a class="anchor-link" href="#Examples-of-probabilistic-graphical-models">&#182;</a></h3><p><img src="naive.jpg" alt="PGM"></p>
+<h3 id="Examples-of-probabilistic-graphical-models"><em>Examples of probabilistic graphical models</em><a class="anchor-link" href="#Examples-of-probabilistic-graphical-models">&#182;</a></h3><p><img src="naive.jpg"/></p>
 </blockquote>
 <h3 id="A-Real-world-Bayesian-network">A Real-world Bayesian network<a class="anchor-link" href="#A-Real-world-Bayesian-network">&#182;</a></h3><ol>
 <li>A fire may generate smoke.</li>
@@ -196,7 +196,7 @@ div#notebook {
 <li>The alarm may alert the homeowner.</li>
 <li>The alarm may alert the fire department.</li>
 </ol>
-<blockquote><h3 id="A-Bayesian-network-for-smokre-detectors"><em>A Bayesian network for smokre detectors</em><a class="anchor-link" href="#A-Bayesian-network-for-smokre-detectors">&#182;</a></h3><p><img src="smoke.jpg" alt="PGM"></p>
+<blockquote><h3 id="A-Bayesian-network-for-smokre-detectors"><em>A Bayesian network for smokre detectors</em><a class="anchor-link" href="#A-Bayesian-network-for-smokre-detectors">&#182;</a></h3><p><img src="smoke.jpg"/></p>
 </blockquote>
 <h2 id="Naive-Bayes-Classifiers">Naive Bayes Classifiers<a class="anchor-link" href="#Naive-Bayes-Classifiers">&#182;</a></h2><h3 id="Introducing-the-multinomial-Naive-Bayes">Introducing the multinomial Naive Bayes<a class="anchor-link" href="#Introducing-the-multinomial-Naive-Bayes">&#182;</a></h3><p>Let's consider the problem of how to predict change in interest rates. The first step is to list the factors that potentially may trigger or cause an increase or decrease in the interest rates. For the sake of illustrating Naïve Bayes, we will select the consumer
 price index (CPI), change in the Federal fund rate (FDF) and the gross domestic product (GDP) as a first set of features. The terminology is described in the Terminology section under Finances 101 in Appendix A, Basic Concepts.
@@ -206,9 +206,9 @@ price index (CPI), change in the Federal fund rate (FDF) and the gross domestic 
 <li>금융 투자 전문가가 없음 (히스토리 데이터에 의존)</li>
 <li>1년 재무부 증권 증가의 수율(금리 변화)는 선택한 기능과의 강한 상관 관계가 있음</li>
 </ol>
-<blockquote><h3 id="The-Naive-Bayes-model-for-predicting-the-Change-in-the-yield-of-the-1-year-T-bill"><em>The Naive Bayes model for predicting the Change in the yield of the 1-year T-bill</em><a class="anchor-link" href="#The-Naive-Bayes-model-for-predicting-the-Change-in-the-yield-of-the-1-year-T-bill">&#182;</a></h3><p><img src="t-bill.jpg" alt="PGM"></p>
-<h3 id="Table"><em>Table</em><a class="anchor-link" href="#Table">&#182;</a></h3><p><img src="table.jpg" alt="PGM"></p>
-<h3 id="Table2"><em>Table2</em><a class="anchor-link" href="#Table2">&#182;</a></h3><p><img src="table2.jpg" alt="PGM"></p>
+<blockquote><h3 id="The-Naive-Bayes-model-for-predicting-the-Change-in-the-yield-of-the-1-year-T-bill"><em>The Naive Bayes model for predicting the Change in the yield of the 1-year T-bill</em><a class="anchor-link" href="#The-Naive-Bayes-model-for-predicting-the-Change-in-the-yield-of-the-1-year-T-bill">&#182;</a></h3><p><img src="t-bill.jpg"/></p>
+<h3 id="Table"><em>Table</em><a class="anchor-link" href="#Table">&#182;</a></h3><p><img src="table.jpg"/></p>
+<h3 id="Table2"><em>Table2</em><a class="anchor-link" href="#Table2">&#182;</a></h3><p><img src="table2.jpg"/></p>
 </blockquote>
 <h3 id="Formalism">Formalism<a class="anchor-link" href="#Formalism">&#182;</a></h3><ul>
 <li>Class prior probability or class prior is the probability of a class</li>
@@ -228,8 +228,8 @@ price index (CPI), change in the Federal fund rate (FDF) and the gross domestic 
 <li>The volume of the last trading day, vl(t), is above or below the average volume of the n previous trading days</li>
 <li>The volatility on the last trading day, vt(t), is above or below the average volatility of the previous n trading days</li>
 </ul>
-<p><img src="stock.jpg" alt="PGM"></p>
-<h3 id="The-zero-frquency-problem">The zero-frquency problem<a class="anchor-link" href="#The-zero-frquency-problem">&#182;</a></h3><p><img src="zero.jpg" alt="PGM"></p>
+<p><img src="stock.jpg"/></p>
+<h3 id="The-zero-frquency-problem">The zero-frquency problem<a class="anchor-link" href="#The-zero-frquency-problem">&#182;</a></h3><p><img src="zero.jpg"/></p>
 <h3 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h3><h4 id="Software-design">Software design<a class="anchor-link" href="#Software-design">&#182;</a></h4><ul>
 <li>A generic model, NaiveBayesModel, of the type Model, which is initialized through training during the instantiation of the class.</li>
 <li>A model for the binomial classification, BinNaiveBayesModel, which subclasses NaiveBayesModel. The model consists of a density function of the type Density, and a pair of positive and negative Likelihood instances. </li>
@@ -237,7 +237,7 @@ price index (CPI), change in the Federal fund rate (FDF) and the gross domestic 
 <li>The predictive or classification routine is implemented as a data transformation extending the PipeOperator trait.</li>
 <li>The NaiveBayes classifier class has two parameters: a smoothing</li>
 </ul>
-<blockquote><h3 id="UML-Class-diagram"><em>UML Class diagram</em><a class="anchor-link" href="#UML-Class-diagram">&#182;</a></h3><p><img src="umlnaive.jpg" alt="PGM"></p>
+<blockquote><h3 id="UML-Class-diagram"><em>UML Class diagram</em><a class="anchor-link" href="#UML-Class-diagram">&#182;</a></h3><p><img src="umlnaive.jpg"/></p>
 </blockquote>
 <h3 id="Training">Training<a class="anchor-link" href="#Training">&#182;</a></h3><ul>
 <li>The number of occurrences k of this features for N &gt; k observations in case of binary features or counters</li>
@@ -609,7 +609,7 @@ Compilation Failed
 <li>The labeled training set defined as a time series: xt</li>
 <li>The probability density function: density</li>
 </ul>
-<blockquote><h3 id="F1-Measure"><em>F1-Measure</em><a class="anchor-link" href="#F1-Measure">&#182;</a></h3><p><img src="f1.jpg" alt="PGM"></p>
+<blockquote><h3 id="F1-Measure"><em>F1-Measure</em><a class="anchor-link" href="#F1-Measure">&#182;</a></h3><p><img src="f1.jpg"/></p>
 </blockquote>
 <p><a href="http://blog.naver.com/kmkim1222?Redirect=Log&amp;logNo=220106232149">http://blog.naver.com/kmkim1222?Redirect=Log&amp;logNo=220106232149</a> (혼동행렬)</p>
 
@@ -733,8 +733,8 @@ Class NaiveBayes[T &lt;% Double](smoothing: Double, xt:XTSeries[(Array[T], Int)]
 <h3 id="Classification">Classification<a class="anchor-link" href="#Classification">&#182;</a></h3><p>The likelihood and class prior that have been computed through training is used for validating the model and classifying new observations.</p>
 <p>The score represents the log of likelihood estimate (or the posterior probability), which is computed as the summation of the log of the Gaussian distribution using the mean and standard deviation, extracted from the training phase and the log of the likelihood class.</p>
 <p>The Naïve Bayes classification using Gaussian distribution is illustrated using two classes, C1 and C2, and a model with two features (x and y):</p>
-<p><img src="gaussian.jpg" alt="PGM"></p>
-<blockquote><h3 id="Na&#239;ve-Bayes-classification-using-Gaussian-density"><em>Na&#239;ve Bayes classification using Gaussian density</em><a class="anchor-link" href="#Na&#239;ve-Bayes-classification-using-Gaussian-density">&#182;</a></h3><p><img src="gaussian2.jpg" alt="PGM"></p>
+<p><img src="gaussian.jpg"/></p>
+<blockquote><h3 id="Na&#239;ve-Bayes-classification-using-Gaussian-density"><em>Na&#239;ve Bayes classification using Gaussian density</em><a class="anchor-link" href="#Na&#239;ve-Bayes-classification-using-Gaussian-density">&#182;</a></h3><p><img src="gaussian2.jpg"/></p>
 </blockquote>
 <p><a href="https://ko.wikipedia.org/wiki/%EB%82%98%EC%9D%B4%EB%B8%8C_%EB%B2%A0%EC%9D%B4%EC%A6%88_%EB%B6%84%EB%A5%98">https://ko.wikipedia.org/wiki/%EB%82%98%EC%9D%B4%EB%B8%8C_%EB%B2%A0%EC%9D%B4%EC%A6%88_%EB%B6%84%EB%A5%98</a> (위키피디아 나이브 베이지 분류)</p>
 
@@ -1066,7 +1066,7 @@ validate(labels.drop(numObsForTrains+1), nb)
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3><p>The next chart plots the value of the F1 measure of the predictor of the direction of the IBM stock using price, volume, and volatility over the previous n trading days, with n varying from 1 to 12 trading days:</p>
-<p><img src="resultgraph.jpg" alt="PGM"></p>
+<p><img src="resultgraph.jpg"/></p>
 <p>The preceding chart illustrates the impact of the value of the averaging period (number of trading days) on the quality of the multinomial Naïve Bayesian prediction, using the value of stock price, volatility, and volume relative to their average over the averaging period.
 From this experiment, we conclude that:</p>
 <ul>
@@ -1083,7 +1083,7 @@ From this experiment, we conclude that:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Multivariate-Bernoulli-classification">Multivariate Bernoulli classification<a class="anchor-link" href="#Multivariate-Bernoulli-classification">&#182;</a></h3><h4 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h4><blockquote><h3 id="The-Bernoulli-mixture-model"><em>The Bernoulli mixture model</em><a class="anchor-link" href="#The-Bernoulli-mixture-model">&#182;</a></h3><p><img src="bern.jpg" alt="PGM"></p>
+<h3 id="Multivariate-Bernoulli-classification">Multivariate Bernoulli classification<a class="anchor-link" href="#Multivariate-Bernoulli-classification">&#182;</a></h3><h4 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h4><blockquote><h3 id="The-Bernoulli-mixture-model"><em>The Bernoulli mixture model</em><a class="anchor-link" href="#The-Bernoulli-mixture-model">&#182;</a></h3><p><img src="bern.jpg"/></p>
 </blockquote>
 
 </div>
@@ -1124,7 +1124,7 @@ From this experiment, we conclude that:</p>
 <li>같은 워드 넷과 같은 감각, hyponyms 및 동의어를 지원하는 사전에 대한 용어를 일치시킵니다.</li>
 <li>DBpedia를 사용하여 명확하게 단어의 의미 </li>
 </ol>
-<blockquote><h3 id="The-Bernoulli-mixture-model"><em>The Bernoulli mixture model</em><a class="anchor-link" href="#The-Bernoulli-mixture-model">&#182;</a></h3><p><img src="edit.jpg" alt="PGM"></p>
+<blockquote><h3 id="The-Bernoulli-mixture-model"><em>The Bernoulli mixture model</em><a class="anchor-link" href="#The-Bernoulli-mixture-model">&#182;</a></h3><p><img src="edit.jpg"/></p>
 </blockquote>
 <h4 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h4><ol>
 <li>Extracting all news with a reference to a specific stock or company in the news feed.</li>
@@ -1147,7 +1147,7 @@ From this experiment, we conclude that:</p>
 <li>nrtf, 날짜 별 기사의 평균 개수에 대한 상대적인 빈도를 정규화.</li>
 </ol>
 <p><a href="http://codezip.tistory.com/429">http://codezip.tistory.com/429</a> (TF-IDF)</p>
-<h4 id="Extraction-of-terms">Extraction of terms<a class="anchor-link" href="#Extraction-of-terms">&#182;</a></h4><h4 id="Scoring-of-terms">Scoring of terms<a class="anchor-link" href="#Scoring-of-terms">&#182;</a></h4><h4 id="Testing">Testing<a class="anchor-link" href="#Testing">&#182;</a></h4><h4 id="Retrieving-textual-information">Retrieving textual information<a class="anchor-link" href="#Retrieving-textual-information">&#182;</a></h4><h4 id="Evaluation">Evaluation<a class="anchor-link" href="#Evaluation">&#182;</a></h4><blockquote><h3 id="Bar-chart-representing-predominant-keywords-in-predicting-TSLA-stock-movement"><em>Bar chart representing predominant keywords in predicting TSLA stock movement</em><a class="anchor-link" href="#Bar-chart-representing-predominant-keywords-in-predicting-TSLA-stock-movement">&#182;</a></h3><p><img src="eval.jpg" alt="PGM"></p>
+<h4 id="Extraction-of-terms">Extraction of terms<a class="anchor-link" href="#Extraction-of-terms">&#182;</a></h4><h4 id="Scoring-of-terms">Scoring of terms<a class="anchor-link" href="#Scoring-of-terms">&#182;</a></h4><h4 id="Testing">Testing<a class="anchor-link" href="#Testing">&#182;</a></h4><h4 id="Retrieving-textual-information">Retrieving textual information<a class="anchor-link" href="#Retrieving-textual-information">&#182;</a></h4><h4 id="Evaluation">Evaluation<a class="anchor-link" href="#Evaluation">&#182;</a></h4><blockquote><h3 id="Bar-chart-representing-predominant-keywords-in-predicting-TSLA-stock-movement"><em>Bar chart representing predominant keywords in predicting TSLA stock movement</em><a class="anchor-link" href="#Bar-chart-representing-predominant-keywords-in-predicting-TSLA-stock-movement">&#182;</a></h3><p><img src="eval.jpg"/></p>
 </blockquote>
 <p>The bar chart shows that the terms China, representing all the mentions of the activities of Tesla Motors in China, and Charger, which covers all the references to the charging stations, have a significant positive impact on the direction of the stock with a probability averaging 75 percent. The terms under the category Risk have a negative impact on the direction of the stock with a probability of 68 percent, or a positive impact of the direction of the stock with a probability of 32 percent. Within the remaining eight categories, 72 percent of them were unusable as a predictor of the direction of the stock price.</p>
 <h3 id="Pros-and-cons">Pros and cons<a class="anchor-link" href="#Pros-and-cons">&#182;</a></h3><ul>
